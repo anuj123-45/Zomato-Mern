@@ -4,10 +4,10 @@ const MenuSchema = new mongoose.Schema({
     menu: [
         {
             name: { type: String, required: true },
-            items: {
+            items: [{
                 type: mongoose.Types.ObjectId,
                 ref: "Foods"
-            }
+            }]
         }
     ],
 
