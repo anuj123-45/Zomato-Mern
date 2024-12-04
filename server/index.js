@@ -1,6 +1,15 @@
+// importing env variables
+import dotenv from 'dotenv'
+dotenv.config()
+
+// libraries
 import express from "express";
 import cors from 'cors';
 import helmet from 'helmet';
+
+// Database Connection
+
+import ConnectDB from './database/connection.js'
 
 const app=express();
 
@@ -16,7 +25,6 @@ app.get("/",(req,res)=>{
 })
 
 
-app.listen((5000),()=>{
-    console.log(`server running`);
-    
-})
+app.listen((5000),()=>ConnectDB().then(()=>  console.log(`Server running`)).catch(()=>
+    console.log(`Server running but db connection failed !!!`)
+))
