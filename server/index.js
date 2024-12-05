@@ -7,6 +7,10 @@ import express from "express";
 import cors from 'cors';
 import helmet from 'helmet';
 
+// microservice route
+
+import Auth from './API/Auth'
+
 // Database Connection
 
 import ConnectDB from './database/connection.js'
@@ -18,6 +22,11 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 app.use(helmet())
 app.use(cors())
+
+
+// application routes
+
+app.use("/auth",Auth)
 
 
 app.get("/",(req,res)=>{
