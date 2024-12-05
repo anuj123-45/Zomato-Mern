@@ -1,12 +1,12 @@
-import { FoodModel } from './food'
-import { MenuModel } from './menu'
-import { RestaurantModel } from './restaurant'
-import { UserModel } from './user'
-import { OrderModel } from './order'
-import { ReviewModel } from './review'
-import { ImageModel } from './images'
+import { FoodModel } from './food/index.js'
+import { MenuModel } from './menu/index.js'
+import { RestaurantModel } from './restaurant/index.js'
+import { UserModel } from './user/index.js'
+import { OrderModel } from './order/index.js'
+import { ReviewModel } from './review/index.js'
+import { ImageModel } from './images/index.js'
 
-export {
+export  {
     FoodModel,
     MenuModel,
     RestaurantModel,

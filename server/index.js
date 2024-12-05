@@ -9,7 +9,7 @@ import helmet from 'helmet';
 
 // microservice route
 
-import Auth from './API/Auth'
+import Auth from "./API/Auth/index.js"
 
 // Database Connection
 
