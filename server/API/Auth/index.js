@@ -30,6 +30,37 @@ Router.post("/signup",async(req,res)=>{
 
 
 
+/*
+Route    /signin
+Des      signin with email and password
+Access   Public
+Params   None  
+Method   POST
+*/
+
+Router.post("/signin",async(req,res)=>{
+    try {
+      const user=await UserModel.findByEmailAndPassword(req.body.credentials)
+      console.log(user);
+        const token= await user.generateToken();
+
+        return res.status(200).json({token,status:"Success"})        
+    } catch (error) {
+        return res.status(500).json({error:error.message})
+    }
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
