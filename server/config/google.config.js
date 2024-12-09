@@ -1,14 +1,14 @@
 import googleOAuth from 'passport-google-oauth20'
 
-import { UserModel } from '../database/allmodels'
+import { UserModel } from '../database/allmodels.js'
 
 const GoogleStrategy = googleOAuth.Strategy;
 
 export default (passport) => {
     passport.use(
         new GoogleStrategy({
-            clientID: GOOGLE_CLIENT_ID,
-            clientSecret: GOOGLE_CLIENT_SECRET,
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
             callbackURL: "http://localhost:5000/auth/google/callback"
         },
             async (accessToken, refreshToken, profile, done) => {
@@ -20,12 +20,11 @@ export default (passport) => {
                 };
 
                 try {
-                     // check if user exist
+                    // check if user exist
                     const user = await UserModel.findOne({ email: newUser.email })
-                   
-                    // generate token
-                    const token = user.generateToken();
                     if (user) {
+                        // generate token
+                        const token = user.generateToken();
                         // return user
                         done(null, { user, token })
                     }
@@ -33,18 +32,20 @@ export default (passport) => {
                     else {
                         // creating a new user
                         const user = await UserModel.create(newUser)
+                        // generate token
+                        const token = user.generateToken();
                         // return user
                         done(null, { user, token })
                     }
 
                 } catch (error) {
-                    done(error,null)
+                    done(error, null)
                 }
 
             }
         )
     )
 
-    passport.serializeUser=((userData,done)=>done(null,{...userData}))
-    passport.deserializeUser=((id,done)=>done(null,id))
+    passport.serializeUser = ((userData, done) => done(null, { ...userData }))
+    passport.deserializeUser = ((id, done) => done(null, id))
 }

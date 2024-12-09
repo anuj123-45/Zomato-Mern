@@ -9,7 +9,7 @@ import helmet from 'helmet';
 import passport from 'passport';
 
 // config
-import googleAuthConfig from './config/google.config.js'
+import GoogleAuthConfig from './config/google.config.js'
 
 // microservice route
 
@@ -28,7 +28,7 @@ app.use(helmet())
 app.use(cors())
 
 // passport config
-googleAuthConfig(passport);
+GoogleAuthConfig(passport);
 
 // application routes
 
