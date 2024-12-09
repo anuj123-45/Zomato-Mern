@@ -84,7 +84,7 @@ Router.get(
         if (!req.session.passport || !req.session.passport.user) {
             return res.status(401).json({ error: "Authentication failed" });
         }
-        res.json({ token: req.session.passport.user.token });
+        res.json({ token: req.user.token});
     }
 );
 
