@@ -48,7 +48,7 @@ export default (passport) => {
     // Serialize user into session
 passport.serializeUser((userData, done) => {
     console.log("Serializing user:", userData);  // Log user data
-    done(null, { id: userData.user.id, token: userData.token });  // Store user ID and token in session
+    done(null, { id: userData.user._id, token: userData.token });  // Store user ID and token in session
 });
 
 // Deserialize user from session

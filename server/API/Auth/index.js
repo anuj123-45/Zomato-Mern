@@ -64,7 +64,7 @@ Router.get(
     passport.authenticate('google', {
         scope: [
             "https://www.googleapis.com/auth/userinfo.profile",
-            "https://www.googleapis.com/auth/userinfo.email"
+            "https://www.googleapis.com/auth/userinfo.email",
         ]
     })
 );
@@ -84,7 +84,7 @@ Router.get(
         if (!req.session.passport || !req.session.passport.user) {
             return res.status(401).json({ error: "Authentication failed" });
         }
-        res.json({ token: req.user.token});
+        res.json({ token: req.user.token });
     }
 );
 
