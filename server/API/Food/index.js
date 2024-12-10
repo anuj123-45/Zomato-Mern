@@ -7,4 +7,41 @@ import { FoodModel } from '../../database/allmodels';
 
 const Router = express.Router();
 
+/*
+Route    /
+Des      get all food based on particular restaurant
+Access   Public
+Params   None  
+Method   Get
+*/
+
+Router.get("/r/:_id", async (req, res) => {
+    try {
+        const { _id } = req.params;
+        const foods = await FoodModel.find({ restaurant: _id })
+        return res.json({ foods })
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+})
+
+/*
+Route    /
+Des      get all food based on particular category
+Access   Public
+Params   None  
+Method   Get
+*/
+
+Router.get("/c/:category", async (req, res) => {
+    try {
+        const {category} = req.params;
+        const foods = await FoodModel.find({category:{$regex:category,$options:"i"}})
+        return res.json({ foods })
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
+})
 
