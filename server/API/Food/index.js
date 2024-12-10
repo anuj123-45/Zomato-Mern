@@ -8,10 +8,10 @@ import { FoodModel } from '../../database/allmodels';
 const Router = express.Router();
 
 /*
-Route    /
+Route    /r
 Des      get all food based on particular restaurant
 Access   Public
-Params   None  
+Params   _id 
 Method   Get
 */
 
@@ -27,10 +27,10 @@ Router.get("/r/:_id", async (req, res) => {
 })
 
 /*
-Route    /
+Route    /c
 Des      get all food based on particular category
 Access   Public
-Params   None  
+Params   category
 Method   Get
 */
 
