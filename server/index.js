@@ -17,6 +17,7 @@ import GoogleAuthConfig from './config/google.config.js'
 // microservice route
 
 import Auth from "./API/Auth/index.js"
+import Restaurant from './API/Restaurant/index.js'
 
 // Database Connection
 
@@ -46,6 +47,7 @@ GoogleAuthConfig(passport);
 // application routes
 
 app.use("/auth", Auth)
+app.use("/restaurant",Restaurant)
 
 
 app.get("/", (req, res) => {
