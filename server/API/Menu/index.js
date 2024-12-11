@@ -3,14 +3,45 @@ import passport from "passport";
 import express from "express";
 
 // Database Model
-import {MenuModel} from '../../database/allmodels';
+import {ImageModel, MenuModel} from '../../database/allmodels';
 
 const Router = express.Router();
 
 /*
-Route    /r
-Des      get all food based on particular restaurant
-Access   Public
+Route    /list
+Des      get all list menu based on id
+Access Public
 Params   None  
 Method   Get
 */
+
+Router.get("/list/:_id",async(req,res)=>{
+try {
+    const {_id}=req.params;
+const menus = await MenuModel.findById(_id);
+return res.json({menus})
+    
+} catch (error) {
+    return res.status(500).json({error:error.message})
+}
+})
+
+/*
+Route    /images
+Des      get all  menu images based on id
+Access Public
+Params   None  
+Method   Get
+*/
+
+Router.get("/image/:_id",async(req,res)=>{
+    try {
+        const {_id}=req.params;
+    const menus = await ImageModel.findById(_id);
+    return res.json({menus})
+        
+    } catch (error) {
+        return res.status(500).json({error:error.message})
+    }
+    })
+    
