@@ -18,6 +18,8 @@ import GoogleAuthConfig from './config/google.config.js'
 
 import Auth from "./API/Auth/index.js"
 import Restaurant from './API/Restaurant/index.js'
+import Food from './API/Food/index.js'
+import Menu from './API/Menu/index.js'
 
 // Database Connection
 
@@ -48,7 +50,8 @@ GoogleAuthConfig(passport);
 
 app.use("/auth", Auth)
 app.use("/restaurant",Restaurant)
-
+app.use("/menu",Menu)
+app.use("/food",Food)
 
 app.get("/", (req, res) => {
     return res.json({ message: "Setup done" })
