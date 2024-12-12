@@ -3,7 +3,7 @@ import passport from "passport";
 import express from "express";
 
 // Database Model
-import {ImageModel, MenuModel} from '../../database/allmodels';
+import {ImageModel, MenuModel} from '../../database/allmodels.js';
 
 const Router = express.Router();
 
