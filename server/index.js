@@ -21,6 +21,7 @@ import Restaurant from './API/Restaurant/index.js'
 import Food from './API/Food/index.js'
 import Menu from './API/Menu/index.js'
 import Image from './API/Image/index.js';
+import Order from './API/Orders/index.js';
 
 // Database Connection
 
@@ -54,6 +55,7 @@ app.use("/restaurant",Restaurant)
 app.use("/menu",Menu)
 app.use("/food",Food)
 app.use("/image",Image)
+app.use("/order",Order)
 
 app.get("/", (req, res) => {
     return res.json({ message: "Setup done" })
