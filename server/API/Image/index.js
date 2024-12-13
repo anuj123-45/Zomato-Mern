@@ -1,11 +1,12 @@
-// Libraries
-import dotenv from 'dotenv'
-dotenv.config()
+
+
 // Libraries
 import passport from "passport";
+
+
 import express from "express";
-import aws from "aws-sdk";
 import multer from "multer";
+import { s3Upload } from '../../Utils/AWS/s3.js';
 
 // Database Model
 // import { ImageModel } from '../../database/allmodels';
@@ -16,12 +17,8 @@ const Router = express.Router();
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// AWS S3 Bucket Config
-const s3bucket = new aws.S3({
-    accessKeyId: process.env.AWS_S3_ACCESS_KEY,
-    secretAccessKey: process.env.AWS_S3_SECRET_KEY,
-    region: "us-east-1", // Ensure this region matches your S3 bucket's region
-});
+
+
 
 /*
 Route    / 
@@ -50,19 +47,6 @@ Router.post("/", upload.single("file"), async (req, res) => {
             Body: file.buffer, // File data
             ContentType: file.mimetype, // Mime type of the file
             ACL:"public-read",
-        };
-
-        // Function to upload to S3
-        const s3Upload = (options) => {
-            return new Promise((resolve, reject) =>
-                s3bucket.upload(options, (error, data) => {
-                    if (error) {
-                        console.error("Error uploading to S3:", error); // Log the error for debugging
-                        return reject(error);
-                    }
-                    return resolve(data);
-                })
-            );
         };
 
         // Upload the file to S3
