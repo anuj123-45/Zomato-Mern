@@ -4,6 +4,9 @@ import passport from 'passport';
 //Models
 import { UserModel } from '../../database/allmodels.js'
 
+// validation
+import { validateSignUp } from '../../Validation/auth';
+
 const Router = express.Router();
 
 
@@ -16,6 +19,8 @@ Method   POST
 */
 
 Router.post("/signup", async (req, res) => {
+    const { error } = await validateSignUp(req.body.credentials)
+    if (error) return res.status(500).json({ error })
     try {
         await UserModel.findByEmailAndPhone(req.body.credentials)
 
