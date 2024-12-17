@@ -15,7 +15,7 @@ Params   _id
 Method   Get
 */
 
-Router.get("/:_id", async (req, res) => {
+Router.get("/:_id",passport.authenticate("jwt",{session:false}), async (req, res) => {
     try {
         const { _id } = user.params;
         const getAllOrders = await OrderModel.findOne({ user: _id })
