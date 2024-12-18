@@ -13,6 +13,7 @@ import passport from 'passport';
 
 // config
 import GoogleAuthConfig from './config/google.config.js'
+import routeConfig from './config/route.config.js';
 
 // microservice route
 
@@ -49,6 +50,7 @@ app.use(passport.session())
 
 // passport config
 GoogleAuthConfig(passport);
+routeConfig(passport)
 
 // application routes
 
