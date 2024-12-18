@@ -15,13 +15,16 @@ Params   _id
 Method   Get
 */
 
-Router.get("/:_id",passport.authenticate("jwt",{session:false}), async (req, res) => {
+Router.get("/:_id", passport.authenticate("jwt", { session: false }), async (req, res) => {
     try {
-        const { _id } = user.params;
+        const { _id } = req.params;
         const getAllOrders = await OrderModel.findOne({ user: _id })
-        if (!getAllOrders) return res.status(404).json({ error: "User not found" })
-
-        return res.status(200).json({ orders: getAllOrders })
+        if (!getAllOrders) {
+            return res.status(404).json({ error: "User not found" })
+        }
+        else {
+            return res.status(200).json({ orders: getAllOrders })
+        }
     } catch (error) {
         return res.status(500).json({ error: error.message })
     }
