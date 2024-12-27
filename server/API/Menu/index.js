@@ -3,7 +3,10 @@ import passport from "passport";
 import express from "express";
 
 // Database Model
-import {ImageModel, MenuModel} from '../../database/allmodels.js';
+import { ImageModel, MenuModel } from '../../database/allmodels.js';
+
+// validation
+import { validateMenuAndImageId } from "../../Validation/menu.js";
 
 const Router = express.Router();
 
@@ -15,15 +18,16 @@ Params   None
 Method   Get
 */
 
-Router.get("/list/:_id",async(req,res)=>{
-try {
-    const {_id}=req.params;
-const menus = await MenuModel.findById(_id);
-return res.json({menus})
-    
-} catch (error) {
-    return res.status(500).json({error:error.message})
-}
+Router.get("/list/:_id", async (req, res) => {
+    try {
+        await validateMenuAndImageId(req.params)
+        const { _id } = req.params;
+        const menus = await MenuModel.findById(_id);
+        return res.json({ menus })
+
+    } catch (error) {
+        return res.status(500).json({ error: error.message })
+    }
 })
 
 /*
@@ -34,16 +38,17 @@ Params   None
 Method   Get
 */
 
-Router.get("/image/:_id",async(req,res)=>{
+Router.get("/image/:_id", async (req, res) => {
     try {
-        const {_id}=req.params;
-    const menus = await ImageModel.findById(_id);
-    return res.json({menus})
-        
+        await validateMenuAndImageId(req.params)
+        const { _id } = req.params;
+        const menus = await ImageModel.findById(_id);
+        return res.json({ menus })
+
     } catch (error) {
-        return res.status(500).json({error:error.message})
+        return res.status(500).json({ error: error.message })
     }
-    })
-    
+})
+
 
 export default Router
