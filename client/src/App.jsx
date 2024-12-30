@@ -1,13 +1,18 @@
-
+import React from "react"
+// HOC
+import HomeLayoutHOC from "./HOC/Home.HOC"
+// component
+import Temp from './components/Temp'
+import { Routes } from "react-router-dom"
 
 function App() {
 
 
   return (
     <>
-    <h1 className="text-3xl font-bold underline bg-red-600">
-      Hello world!
-    </h1>
+      <Routes>
+      {HomeLayoutHOC({ path: "/", component: Temp})}
+      </Routes>
     </>
   )
 }
