@@ -1,10 +1,16 @@
 import React from 'react'
+// components
+import Navbar from '../components/Navbar/index'
+
 
 const HomeLayout = (props) => {
   return (
     <>
-      <h1>Home Layout</h1>
-      {props.children}
+      <Navbar/>
+      <div className="container mx-auto px-4 lg:px-20">
+        {props.children}
+      </div>
+
     </>
   )
 }
