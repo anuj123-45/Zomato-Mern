@@ -18,7 +18,10 @@ const MediumNav = () => {
         <div className='w-32 h-20-'>
             <img src="https://cdn.freelogovectors.net/wp-content/uploads/2024/03/zomato-logo-freelogovectors.net_.png" alt="logo" className='w-full h-full' />
         </div>
-      
+      <div className='w-full bg-white shadow'>
+        <div></div>
+        <div></div>
+      </div>
     </div>
 
 }
