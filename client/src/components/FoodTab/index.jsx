@@ -11,7 +11,6 @@ const MobileTabs = () => {
         id: "delivery",
         icon: < MdDeliveryDining />,
         name: "Delivery",
-        isActive: false,
     },
 
     {
@@ -19,7 +18,6 @@ const MobileTabs = () => {
         id: "dinningout",
         icon: < IoFastFoodOutline />,
         name: "DinningOut",
-        isActive: false,
     },
 
 
@@ -28,7 +26,6 @@ const MobileTabs = () => {
         id: "nightlife",
         icon: < BiDrink />,
         name: "Nightlife",
-        isActive: false,
     },
 
 
@@ -37,7 +34,6 @@ const MobileTabs = () => {
         id: "nutrition",
         icon: <IoNutritionOutline />,
         name: "Nutrition",
-        isActive: false,
     },
     ])
 
