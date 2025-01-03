@@ -1,31 +1,62 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { IoFastFoodOutline, IoNutritionOutline } from "react-icons/io5";
 import { MdDeliveryDining } from "react-icons/md";
 import { BiDrink } from "react-icons/bi";
-
-
-
+import { useParams,Link} from 'react-router-dom';
 
 
 const MobileTabs = () => {
+    const [alltypes, setAlltypes] = useState([{
+
+        id: "delivery",
+        icon: < MdDeliveryDining />,
+        name: "Delivery",
+        isActive: false,
+    },
+
+    {
+
+        id: "dinningout",
+        icon: < IoFastFoodOutline />,
+        name: "DinningOut",
+        isActive: false,
+    },
+
+
+    {
+
+        id: "nightlife",
+        icon: < BiDrink />,
+        name: "Nightlife",
+        isActive: false,
+    },
+
+
+    {
+
+        id: "nutrition",
+        icon: <IoNutritionOutline />,
+        name: "Nutrition",
+        isActive: false,
+    },
+    ])
+
+    const { type } = useParams();
+    
+
     return (<>
         <div className='lg:hidden bg-white shadow-lg p-3 fixed bottom-0 z-10 w-full flex items-center justify-between md:justify-evenly'>
-            <div className='flex flex-col items-center text-xl'>
-                < MdDeliveryDining />
-                <h5 className='text-sm'>Delivery</h5>
-            </div>
-            <div className='flex flex-col items-center text-xl'>
-                < IoFastFoodOutline />
-                <h5 className='text-sm'>Dinning Out</h5>
-            </div>
-            <div className='flex flex-col items-center text-xl'>
-                < BiDrink />
-                <h5 className='text-sm'>Night Life</h5>
-            </div>
-            <div className='flex flex-col items-center text-xl'>
-                <IoNutritionOutline />
-                <h5 className='text-sm'>Nutrition</h5>
-            </div>
+            {
+                alltypes.map((item) => (
+                    <Link to={`/${item.id}`}>
+                    <div key={item.id} className={item.id===type ? ' relative flex flex-col items-center text-xl text-zomato-400 ' : 'flex flex-col items-center text-xl'}>
+                        <div className={item.id===type  && "absolute -top-3 w-full h-2 border-t-2 border-zomato-400"}/>
+                        {item.icon}
+                        <h5 className='text-sm'>{item.name}</h5>
+                    </div>
+                    </Link>
+                ))
+            }
         </div>
     </>
     )

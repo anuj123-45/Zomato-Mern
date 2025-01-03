@@ -3,7 +3,9 @@ import React from "react"
 import HomeLayoutHOC from "./HOC/Home.HOC"
 // component
 import Temp from './components/Temp'
+import Master from "./components/master"
 import { Routes } from "react-router-dom"
+
 
 function App() {
 
@@ -12,6 +14,7 @@ function App() {
     <>
       <Routes>
       {HomeLayoutHOC({ path: "/", component: Temp})}
+      {HomeLayoutHOC({ path: "/:type", component: Master})}
       </Routes>
     </>
   )
