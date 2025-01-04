@@ -46,7 +46,7 @@ const MobileTabs = () => {
             {
                 alltypes.map((item) => (
                     <Link to={`/${item.id}`}>
-                        <div key={item.id} className={item.id === type ? ' relative flex flex-col items-center text-xl text-zomato-400 ' : 'flex flex-col items-center text-xl'}>
+                        <div  className={item.id === type ? ' relative flex flex-col items-center text-xl text-zomato-400 ' : 'flex flex-col items-center text-xl'}>
                             <div className={item.id === type && "absolute -top-3 w-full h-2 border-t-2 border-zomato-400"} />
                             {item.icon}
                             <h5 className='text-sm'>{item.name}</h5>
