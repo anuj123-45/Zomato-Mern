@@ -109,7 +109,7 @@ const LargeTabs = () => {
             {
                 alltypes.map((items) => (
                     <Link to={`/${items.id}`}>
-                        <div className={classnames("flex items-center gap-3", { "border-b-2 border-zomato-400  pb-2 transition duration-700 ease-out": type === items.id })}>
+                        <div className={classnames("flex items-center gap-3", { "border-b-2 border-zomato-400 pb-2 transition duration-700 ease-in-out": type === items.id })}>
                             <div
                                 className={classnames(
                                     "w-16 h-16 bg-gray-100 p-4 rounded-full", { [`bg-${items.activeColor}-100`]: type === items.id }
@@ -143,3 +143,4 @@ const FoodTabs = () => {
 }
 
 export default FoodTabs
+
