@@ -3,6 +3,7 @@ import { IoFastFoodOutline, IoNutritionOutline } from "react-icons/io5";
 import { MdDeliveryDining } from "react-icons/md";
 import { BiDrink } from "react-icons/bi";
 import { useParams, Link } from 'react-router-dom';
+import classnames from 'classnames';
 
 
 const MobileTabs = () => {
@@ -75,7 +76,7 @@ const LargeTabs = () => {
                 "https://b.zmtcdn.com/data/o2_assets/78d25215ff4c1299578ed36eefd5f39d1616149985.png",
             imageActive:
                 "https://b.zmtcdn.com/data/o2_assets/30fa0a844f3ba82073e5f78c65c18b371616149662.png",
-            activeColor: "sky",
+            activeColor: "blue",
 
             name: "Dining Out",
         },
@@ -107,18 +108,24 @@ const LargeTabs = () => {
         <div className='hidden lg:flex container px-20 mx-auto gap-14'>
             {
                 alltypes.map((items) => (
-                    <div className="flex items-center gap-3">
-
-                        <div className={type===items.id ? `w-16 h-16 bg-${items.activeColor}-200  p-4 rounded-full`:'w-16 h-16 bg-gray-100  p-4 rounded-full'}>
-                            <img src={type === items.id ? items.imageActive : items.imageDefault} alt="delivery" className='w-full h-full' />
+                    <Link to={`/${items.id}`}>
+                        <div className={classnames("flex items-center gap-3", { "border-b-2 border-zomato-400  pb-2 transition duration-700 ease-out": type === items.id })}>
+                            <div
+                                className={classnames(
+                                    "w-16 h-16 bg-gray-100 p-4 rounded-full", { [`bg-${items.activeColor}-100`]: type === items.id }
+                                )}
+                            >
+                                <img src={type === items.id ? items.imageActive : items.imageDefault} alt="delivery" className='w-full h-full' />
+                            </div>
+                            <h3 className={type === items.id ? 'text-xl text-zomato-400' : 'text-gray-700 text-xl'}>{items.name}</h3>
                         </div>
-                        <h3 className={type === items.id ? 'text-xl text-zomato-400' : 'text-gray-700 text-xl'}>{items.name}</h3>
-                    </div>
+                    </Link>
+
                 ))
             }
 
 
-        </div>
+        </div >
     </>
 }
 
