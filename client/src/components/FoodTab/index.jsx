@@ -105,7 +105,7 @@ const LargeTabs = () => {
     const { type } = useParams();
 
     return <>
-        <div className='hidden lg:flex container px-20 mx-auto gap-14'>
+        <div className='hidden lg:flex container px-20 my-8 mx-auto gap-14'>
             {
                 alltypes.map((items) => (
                     <Link to={`/${items.id}`}>
