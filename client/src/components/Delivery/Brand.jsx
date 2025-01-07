@@ -16,11 +16,10 @@ const Brand = () => {
         "https://b.zmtcdn.com/data/brand_creatives/logos/80c09d718acddee05a655eb378bb442f_1617875125.png?output-format=webp",
     ];
     const settings = {
-        arrows: true,
         infinite: true,
         speed: 500,
-        slidesToShow: 6, // Default for large screens
-        slidesToScroll: 1, // Always 1
+        slidesToShow: 6,
+        slidesToScroll: 1,
         prevArrow: <PrevArrow />,
         nextArrow: <NextArrow />,
         initialSlide: 0,
@@ -45,16 +44,16 @@ const Brand = () => {
 
     return (
         <>
-            
+
             <div className='my-10 mb-40'>
-            <h1 className="text-xl mb-4 font-semibold">
-                Top Brands in spotlight
-            </h1>
+                <h1 className="text-xl mb-4 font-semibold">
+                    Top Brands in spotlight
+                </h1>
                 <Slider {...settings}>
                     {
                         logos.map((logo) => (
                             <div className='h-32 w-24 p-3'>
-                                <img src={logo} alt="brand" className='h-full w-full' />
+                                <img src={logo} alt="brand" className='h-full w-full focus:outline-none cursor-pointer' />
                             </div>
 
                         ))
