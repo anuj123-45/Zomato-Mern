@@ -45,7 +45,7 @@ const Brand = () => {
     return (
         <>
 
-            <div className='my-10 mb-40'>
+            <div className='my-10 mb-10'>
                 <h1 className="text-xl mb-4 font-semibold">
                     Top Brands in spotlight
                 </h1>
