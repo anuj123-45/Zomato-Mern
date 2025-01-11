@@ -1,6 +1,6 @@
 import React from 'react'
 
-function NutritionCarousalCard(props) {
+function NutritionHeroCarousalCard(props) {
   return (
     <>
     <div className='w-full h-72'>
@@ -11,4 +11,4 @@ function NutritionCarousalCard(props) {
   )
 }
 
-export default NutritionCarousalCard
+export default NutritionHeroCarousalCard

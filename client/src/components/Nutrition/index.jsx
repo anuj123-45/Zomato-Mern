@@ -1,12 +1,19 @@
 import React from 'react'
-import NutritionCarousal from './NutritionCarousal'
+import NutritionHeroCarousal from './NutritionHeroCarousal'
+import NutritionCarousal from './NutriCarousal'
+
 
 
 function Nutrition() {
   return (
- <>
- <NutritionCarousal/>
- </>
+    <>
+      <NutritionHeroCarousal />
+      <div className='my-20'>
+        <NutritionCarousal/>
+      </div>
+      
+
+    </>
   )
 }
 
