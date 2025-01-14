@@ -1,13 +1,13 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 // components
-import Delivery from './Delivery';
-import Dinning from './Dinning';
-import NightLife from './NightLife'
-import Nutrition from './Nutrition';
+import Delivery from '../components/Delivery';
+import Dinning from '../components/Dinning';
+import NightLife from '../components/NightLife'
+import Nutrition from '../components/Nutrition';
 
 
-const Master = () => {
+const Home = () => {
   const { type } = useParams();
   return (
     <>
@@ -22,4 +22,4 @@ const Master = () => {
   )
 }
 
-export default Master
+export default Home

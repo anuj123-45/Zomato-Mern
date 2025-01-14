@@ -3,8 +3,9 @@ import React from "react"
 import HomeLayoutHOC from "./HOC/Home.HOC"
 // component
 import Temp from './components/Temp'
-import Master from "./components/master"
-import { Routes } from "react-router-dom"
+import { Routes, Route, Navigate } from "react-router-dom"
+// pages
+import Home from "./Page/Home"
 
 
 function App() {
@@ -13,8 +14,8 @@ function App() {
   return (
     <>
       <Routes>
-      {HomeLayoutHOC({ path: "/", component: Temp})}
-      {HomeLayoutHOC({ path: "/:type", component: Master})}
+      <Route exact path="/" element={<Navigate to="/delivery" replace />} />
+        {HomeLayoutHOC({ path: "/:type", component: Home })}
       </Routes>
     </>
   )
