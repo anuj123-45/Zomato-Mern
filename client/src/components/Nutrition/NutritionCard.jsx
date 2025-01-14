@@ -7,7 +7,7 @@ const NutritionCard = (props) => {
         <>
             <div className='w-full  md:w-1/2 lg:w-1/3 p-4'>
                 <div className='w-full h-full bg-white rounded-lg hover:shadow-lg transition duration-700 ease-in-out '>
-                <div className={`w-full h-56 bg-${props.bg}-100 rounded-t-2xl`}>
+                <div className={`w-full h-56 bg-red-100 rounded-t-2xl`}>
                     <img src={props.image} alt="supplements" className='w-full h-full' />
                 </div>
                 <div className='px-3 flex flex-col gap-3 py-2 rounded-b-2xl'>
