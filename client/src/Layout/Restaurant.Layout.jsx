@@ -6,10 +6,11 @@ import InfoButton from '../components/Restaurant/InfoButton'
 import { TiStarOutline } from "react-icons/ti";
 import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
 import { BiBookmarkPlus } from "react-icons/bi"
+import TabContainer from '../components/Restaurant/TabConatiner'
 
 
 
-const RestaurantLayout = () => {
+const RestaurantLayout = (props) => {
     const images = [
         "https://b.zmtcdn.com/data/pictures/chains/0/18683480/c9759695c5e14e06927dc556c5f5674f_o2_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
         "https://b.zmtcdn.com/data/pictures/chains/0/18683480/c9759695c5e14e06927dc556c5f5674f_o2_featured_v2.jpg?fit=around|771.75:416.25&crop=771.75:416.25;*,*",
@@ -40,8 +41,12 @@ const RestaurantLayout = () => {
                         <RiShareForwardLine /> Share
                     </InfoButton>
                 </div>
-            </div>
+                <div className='mt-5'>
+                    <TabContainer/>
+                    {props.children}
 
+                </div>
+            </div>
 
         </>
     )
