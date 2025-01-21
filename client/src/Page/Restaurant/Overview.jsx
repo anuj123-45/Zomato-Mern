@@ -2,14 +2,22 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaCircleChevronRight } from "react-icons/fa6";
 import Slider from 'react-slick';
+import ReactStars from "react-rating-stars-component";
 
 // Components
 import MenuCollection from '../../components/Restaurant/MenuCollection';
 import MenuSimilarRestaurantCard from '../../components/Restaurant/MenuSimilarRestaurantCard';
 import { PrevArrow, NextArrow } from '../../components/CarousalArrow';
+import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
+import {
+  MapContainer,
+  TileLayer,
+  Marker, Popup
+} from 'react-leaflet'
 
 const Overview = () => {
   const { id } = useParams();
+  const position = [51.505, -0.09]
 
   const settings = {
     infinite: false,
@@ -51,14 +59,14 @@ const Overview = () => {
     { image: "https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp", title: "Snacks" },
     { image: "https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp", title: "Snacks" },
     { image: "https://b.zmtcdn.com/data/pictures/chains/5/18711475/4be376adb66b75764946d00a7dcf9991_featured_v2.jpg?output-format=webp", title: "Snacks" },
-    
+
   ];
 
   return (
     <>
-      <div className="flex flex-col md:flex-row relative">
+      <div className="flex flex-col md:flex-row relative gap-3">
         {/* Main Content */}
-        <div className="md:w-4/6 shadow-sm">
+        <div className="md:w-3/5 shadow-sm">
           <h2 className="font-semibold text-lg md:text-xl my-4">About this Place</h2>
           <div className="flex items-center justify-between">
             <h4 className="text-lg font-medium">Menu</h4>
@@ -70,7 +78,7 @@ const Overview = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 my-4">
-            <MenuCollection menuTitle="Menu" pages="2" image="https://shorturl.at/l7kby" />
+            <MenuCollection menuTitle="Menu" pages="2" image="https://b.zmtcdn.com/data/menus/201/50201/449179bcd4cb8dc146dfdff28219576b.jpg" />
           </div>
 
           <h4 className="text-lg font-bold my-4 text-zomato-1000">Cuisines</h4>
@@ -104,10 +112,47 @@ const Overview = () => {
               </Slider>
             </div>
           </div>
+
+
+          <div className='my-4'>
+            <h4 className='text-lg font-semibold'>Rate your delivery experience</h4>
+            <ReactStars
+              count={5}
+              size={24}
+              activeColor="#ffd700"
+            />
+          </div>
+          <div className='my-4'>
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
+            <ReviewCard />
+
+          </div>
         </div>
 
         {/* Sidebar */}
-        <aside className="bg-white hidden md:block md:w-2/6 top-2 shadow-sm sticky h-fit"></aside>
+        <aside className=" hidden md:block md:w-2/5  top-2  sticky h-fit bg-white p-3 rounded-md shadow-md">
+          {/* Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum
+          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum */}
+          <h4 className='text-lg font-medium'>Call</h4>
+          <h5 className='text-zomato-400 font-medium'>+917876578377</h5>
+          <h4 className='text-lg font-medium'>Direction</h4>
+          <div>
+            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+              <TileLayer
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+              />
+              <Marker position={position}>
+                <Popup>
+                  A pretty CSS3 popup. <br /> Easily customizable.
+                </Popup>
+              </Marker>
+            </MapContainer>
+          </div>
+        </aside>
       </div>
     </>
   );
