@@ -9,15 +9,13 @@ import MenuCollection from '../../components/Restaurant/MenuCollection';
 import MenuSimilarRestaurantCard from '../../components/Restaurant/MenuSimilarRestaurantCard';
 import { PrevArrow, NextArrow } from '../../components/CarousalArrow';
 import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
-import {
-  MapContainer,
-  TileLayer,
-  Marker, Popup
-} from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+
 
 const Overview = () => {
+
   const { id } = useParams();
-  const position = [51.505, -0.09]
+  const position = [13.884032176876717, 77.60037198127637]
 
   const settings = {
     infinite: false,
@@ -139,8 +137,8 @@ const Overview = () => {
           <h4 className='text-lg font-medium'>Call</h4>
           <h5 className='text-zomato-400 font-medium'>+917876578377</h5>
           <h4 className='text-lg font-medium'>Direction</h4>
-          <div>
-            <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+          <div className='w-full h-48'>
+            <MapContainer center={position} zoom={13}>
               <TileLayer
                 attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
