@@ -1,19 +1,19 @@
 import React from 'react'
 import classnames from 'classnames';
-import { useLocation ,Link,useParams} from 'react-router-dom';
+import { useLocation, Link, useParams } from 'react-router-dom';
 
 
 const Tabs = (props) => {
-    const {id}=useParams();
+    const { id } = useParams();
     return (
         <>
             <Link to={`/restaurant/${id}/${props.route}`}>
-            <div className={classnames("text-gray-500 relative font-bold", {
-                "text-zomato-400 font-semibold border-b-2 border-zomato-400 transition duration-700 ease-in-out": props.isActive,
-            })}
-            >
-                <h3 className="text-lg md:text-xl">{props.title}</h3>
-            </div>
+                <div className={classnames("text-gray-500 relative font-bold", {
+                    "text-zomato-400 font-semibold border-b-2 border-zomato-400 transition duration-700 ease-in-out": props.isActive,
+                })}
+                >
+                    <h3 className="text-lg md:text-xl">{props.title}</h3>
+                </div>
             </Link>
         </>
     )
@@ -24,7 +24,7 @@ const TabContainer = () => {
 
     const currentPath = location.pathname;
     console.log(currentPath);
-    
+
 
     const tabs = [
         {
