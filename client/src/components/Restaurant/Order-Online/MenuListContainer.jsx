@@ -13,8 +13,8 @@ const MenuListContainer = (props) => {
   }
   return (
     <>
-      <div className="w-full flex flex-col gap-3">
-      <div className="w-36 h-48">
+      <div className="w-full flex flex-col gap-3 cursor-pointer">
+      <div className="w-56">
       <MenuCategory
           name="Recommended"
           items={[1, 2]}

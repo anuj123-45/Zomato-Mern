@@ -6,3 +6,25 @@
     width: inherit;
     height: inherit;
 }
+
+
+/* Width of the scrollbar */
+::-webkit-scrollbar {
+    width: 5px;  /* Adjust the width */
+}
+
+/* Track (background of scrollbar) */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;  /* Light gray background */
+}
+
+/* Handle (scroll thumb) */
+::-webkit-scrollbar-thumb {
+    background: #888;  /* Darker gray handle */
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;  /* Even darker handle */
+}
