@@ -7,11 +7,14 @@
     height: inherit;
 }
 
-
-/* Width of the scrollbar */
+ 
+/* Default scrollbar width for all devices */
 ::-webkit-scrollbar {
-    width: 5px;  /* Adjust the width */
+    width: 5px; /* Default width */
 }
+
+
+
 
 /* Track (background of scrollbar) */
 ::-webkit-scrollbar-track {
