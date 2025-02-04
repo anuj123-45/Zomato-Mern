@@ -12,6 +12,7 @@ import Home from "./Page/Home"
 import Overview from "./Page/Restaurant/Overview"
 import Redirect from "./Page/Restaurant/Redirect"
 import OrderOnline from "./Page/Restaurant/OrderOnline"
+import Reviews from "./Page/Restaurant/Reviews"
 
 
 
@@ -26,7 +27,7 @@ function App() {
         <Route exact path="/restaurant/:id" element={<Redirect />} />
         {RestaurantLayoutHOC({ path: "/restaurant/:id/overview", component: Overview })}
         {RestaurantLayoutHOC({ path: "/restaurant/:id/order-online", component: OrderOnline })}
-        {RestaurantLayoutHOC({ path: "/restaurant/:id/reviews", component: Temp })}
+        {RestaurantLayoutHOC({ path: "/restaurant/:id/reviews", component: Reviews })}
         {RestaurantLayoutHOC({ path: "/restaurant/:id/menu", component: Temp })}
         {RestaurantLayoutHOC({ path: "/restaurant/:id/photos", component: Temp })}
       </Routes>

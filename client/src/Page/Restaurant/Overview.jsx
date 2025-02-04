@@ -10,8 +10,8 @@ import ReactStars from 'react-stars'
 import MenuCollection from '../../components/Restaurant/MenuCollection';
 import MenuSimilarRestaurantCard from '../../components/Restaurant/MenuSimilarRestaurantCard';
 import { PrevArrow, NextArrow } from '../../components/CarousalArrow';
-import ReviewCard from '../../components/Restaurant/Reviews/ReviewCard';
 import MapView from '../../components/Restaurant/MapView';
+import ReviewCard from '../../Components/Restaurant/Reviews/ReviewCard';
 
 
 
