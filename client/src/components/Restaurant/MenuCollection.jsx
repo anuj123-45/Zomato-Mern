@@ -1,14 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
+import ImageViewer from "react-simple-image-viewer";
 
-const MenuCollection=(props)=>{
+
+const MenuCollection = (props) => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const closeViewer = () => setIsMenuOpen(false);
+  const openViewer = () => setIsMenuOpen(true);
+
   return (
-   <>
-  <div
+    <>
+      {isMenuOpen && (
+        <ImageViewer
+          src={props.image}
+          currentIndex={0}
+          disableScroll={false}
+          onClose={closeViewer}
+        />
+      )}
+      
+      <div
         className="w-32 h-32 md:w-48 flex flex-col md:h-48"
-      >
+        onClick={openViewer}>
         <div className="w-full h-full overflow-hidden  rounded-lg">
           <img
-            src={props.image}
+            src={props.image[0]}
             alt="menu"
             className="w-full h-full transform transition duration-500 rounded-lg hover:scale-110"
           />
@@ -18,8 +33,8 @@ const MenuCollection=(props)=>{
           <p>{props.pages} Pages</p>
         </div>
       </div>
-   
-   </>
+
+    </>
   )
 }
 

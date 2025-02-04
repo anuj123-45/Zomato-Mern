@@ -81,7 +81,7 @@ const Overview = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 my-4">
-            <MenuCollection menuTitle="Menu" pages="2" image="https://b.zmtcdn.com/data/menus/201/50201/449179bcd4cb8dc146dfdff28219576b.jpg" />
+            <MenuCollection menuTitle="Menu" pages="2" image={["https://b.zmtcdn.com/data/menus/201/50201/449179bcd4cb8dc146dfdff28219576b.jpg","https://img.freepik.com/premium-photo/restaurant-menu-card_1148655-2674.jpg?semt=ais_hybrid"]}/>
           </div>
 
           <h4 className="text-lg font-bold my-4 text-zomato-1000">Cuisines</h4>
