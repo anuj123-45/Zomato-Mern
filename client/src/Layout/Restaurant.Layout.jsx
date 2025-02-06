@@ -7,6 +7,7 @@ import { TiStarOutline } from "react-icons/ti";
 import { RiDirectionLine, RiShareForwardLine } from "react-icons/ri";
 import { BiBookmarkPlus } from "react-icons/bi"
 import TabContainer from '../components/Restaurant/TabConatiner'
+import CartContainer from '../components/Cart/CartContainer'
 
 
 
@@ -47,8 +48,10 @@ const RestaurantLayout = (props) => {
 
                 </div>
             </div>
+            <CartContainer/>
+            </>
 
-        </>
+    
     )
 }
 
