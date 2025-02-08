@@ -1,7 +1,8 @@
-import React , {useEffect} from "react"
+import React from "react"
 // HOC
 import HomeLayoutHOC from "./HOC/Home.HOC"
 import RestaurantLayoutHOC from "./HOC/Restaurant.HOC"
+import CheckoutHOC from "./HOC/Checkout.HOC"
 
 // component
 
@@ -14,6 +15,7 @@ import OrderOnline from "./Page/Restaurant/OrderOnline"
 import Reviews from "./Page/Restaurant/Reviews"
 import Menu from "./Page/Restaurant/Menu"
 import Photos from "./Page/Restaurant/Photos"
+import Checkout from "./Page/Checkout"
 
 
 
@@ -32,6 +34,7 @@ function App() {
         {RestaurantLayoutHOC({ path: "/restaurant/:id/reviews", component: Reviews })}
         {RestaurantLayoutHOC({ path: "/restaurant/:id/menu", component: Menu })}
         {RestaurantLayoutHOC({ path: "/restaurant/:id/photos", component: Photos})}
+        {CheckoutHOC({ path: "/checkout", component: Checkout })}
       </Routes>
     </>
   )
