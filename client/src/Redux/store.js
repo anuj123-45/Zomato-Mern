@@ -4,6 +4,7 @@ import thunk from 'redux-thunk';
 
 // redux middleware
 const middlewares=[thunk];
+// if we are in development mode then only we will use redux-logger
 if(process.env.NODE_ENV==='development'){
     const {logger}=require('redux-logger');
     middlewares.push(logger);

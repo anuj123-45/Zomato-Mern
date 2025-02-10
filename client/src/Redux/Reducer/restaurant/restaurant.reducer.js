@@ -1,10 +1,10 @@
 import { GET_RESTAURANT } from "./restaurant.type"
 
-const INTIAL_STATE = {
+const INITIAL_STATE = {
     restaurants: [],
 }
 
-const restaurantReducer = (state = INTIAL_STATE, action) => {
+const restaurantReducer = (state = INITIAL_STATE, action) => {
     switch(action.type){
      case GET_RESTAURANT:
         return {
