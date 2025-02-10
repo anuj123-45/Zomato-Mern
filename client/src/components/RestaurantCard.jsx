@@ -5,7 +5,7 @@ function RestaurantCard(props) {
   return (
     <>
       <div className='bg-white p-3 w-full rounded-lg md:w-1/2 lg:w-1/3 mb-4 hover:shadow-lg transition duration-700 ease-in-out'>
-        <div className='w-full h-40 lg:h-48 relative'>
+      <div className='w-full h-40 lg:h-48 relative'>
           <div className='absolute flex justify-between items-end w-full bottom-3'>
             <div className='flex flex-col gap-2 items-start'>
               {
@@ -21,7 +21,7 @@ function RestaurantCard(props) {
             </div>
             <span className='bg-white bg-opacity-75 p-1 rounded mr-3'>{props.duarationOfDelivery} min</span>
           </div>
-          <img src={props.photos.length && props.photos[0]} alt="food" className='w-full h-full rounded-lg' />
+          <img src="" alt="food" className='w-full h-full rounded-lg' />
         </div>
         <div className='my-2 flex flex-col'>
 
@@ -31,7 +31,7 @@ function RestaurantCard(props) {
           </div>
 
           <div className='flex items-center justify-between text-gray-500 mr-3'>
-          <p>{props.cusine.length > 5 ? props.cusine.slice(0, 3).join(", ") + "..." : props.cusine.join(", ")}</p>
+          <p>{props.cuisine.length > 5 ? props.cuisine.slice(0, 3).join(", ") + "..." : props.cuisine.join(", ")}</p>
 
             <p>₹ {props.averageCost} for one</p>
           </div>
