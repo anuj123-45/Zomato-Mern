@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState , useEffect } from 'react';
 import DeliveryCarousel from './DeliveryCarousel';
 import Brand from './Brand';
 import RestaurantCard from '../RestaurantCard';
@@ -11,11 +11,10 @@ function Delivery() {
   console.log({ reduxState });
 
   useEffect(() => {
-    if (reduxState?.allRestaurants) {
-      setRestaurantList(reduxState.allRestaurants);
-      console.log(reduxState.allRestaurants);
+    if (reduxState?.restaurants) {
+      setRestaurantList(reduxState.restaurants);
     }
-  }, [reduxState.allRestaurants]);  // ✅ Fixed dependency array
+  }, [reduxState.restaurants]);  
   
   return (
     <>
@@ -23,7 +22,7 @@ function Delivery() {
       <Brand />
       <div className="flex justify-between flex-wrap">
         {restaurantList.map((list) => (
-          <RestaurantCard {...list} key={list._id} />
+         <RestaurantCard {...list} key={list._id} />
         ))}
       </div>
     </>

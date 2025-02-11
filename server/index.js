@@ -55,13 +55,13 @@ routeConfig(passport)
 // application routes
 
 app.use("/auth", Auth)
-app.use("/restaurant", Restaurant)
-app.use("/menu", Menu)
-app.use("/food", Food)
-app.use("/image", Image)
-app.use("/order", Order)
-app.use("/review", Review);
-app.use("/user", User)
+app.use("/restaurant",Restaurant)
+app.use("/menu",Menu)
+app.use("/food",Food)
+app.use("/image",Image)
+app.use("/order",Order)
+app.use("/review",Review);
+app.use("/user",User)
 
 app.get("/", (req, res) => {
     return res.json({ message: "Setup done" })

@@ -16,7 +16,6 @@ const Home = () => {
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(getRestaurant())
-
   }, [])
   return (
     <>
