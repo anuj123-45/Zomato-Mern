@@ -68,6 +68,6 @@ app.get("/", (req, res) => {
 })
 
 
-app.listen((5000), () => ConnectDB().then(() => console.log(`Server running`)).catch(() =>
+app.listen((3000), () => ConnectDB().then(() => console.log(`Server running`)).catch(() =>
     console.log(`Server running but db connection failed !!!`)
 ))
