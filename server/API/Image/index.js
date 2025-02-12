@@ -61,6 +61,17 @@ Method   Post
 //     }
 // });
 
+Router.get("/:_id", async (req, res) => {
+  try {
+    const image = await ImageModel.findById(req.params._id);
+
+    return res.json({ image });
+  } catch (error) {
+    return res.status(500).json({ error: error.message });
+  }
+});
+
+
 Router.post("/new/db", async (req, res) => {
     try {
       const newImages = await ImageModel.create(req.body.imageData);

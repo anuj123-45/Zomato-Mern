@@ -8,13 +8,15 @@ function Delivery() {
   const [restaurantList, setRestaurantList] = useState([]);
 
   const reduxState = useSelector((globalStore) => globalStore.restaurantReducer.restaurants);
-  console.log({ reduxState });
+  console.log( reduxState.allRestaurants );
 
   useEffect(() => {
-    if (reduxState?.restaurants) {
-      setRestaurantList(reduxState.restaurants);
+    if (reduxState?.allRestaurants) {
+      setRestaurantList(reduxState.allRestaurants);
     }
-  }, [reduxState.restaurants]);  
+  }, [reduxState.allRestaurants]);  
+  
+  console.log(restaurantList);
   
   return (
     <>

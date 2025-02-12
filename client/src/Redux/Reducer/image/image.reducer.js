@@ -1,4 +1,4 @@
-import { GET_IMAGE } from "./restaurant.type"
+import { GET_IMAGE } from "./image.type"
 
 const INITIAL_STATE = {
     Image: [],

@@ -6,7 +6,7 @@ import express from "express";
 import { RestaurantModel } from '../../database/allmodels.js';
 
 // validation
-import { validateRestaurantCity,validateRestaurantSearchString } from "../../Validation/restaurant.js";
+import { validateRestaurantCity, validateRestaurantSearchString } from "../../Validation/restaurant.js";
 import { validateRestaurantId } from "../../Validation/food.js";
 
 
@@ -32,14 +32,14 @@ Router.get("/", async (req, res) => {
 })
 
 
-Router.post("/new", passport.authenticate("jwt"), async (req, res) => {
+Router.post("/new", passport.authenticate("jwt", { session: false }), async (req, res) => {
     try {
-      const newRetaurant = await RestaurantModel.create(req.body.restaurantData);
-      return res.json({ restaurants: newRetaurant });
+        const newRetaurant = await RestaurantModel.create(req.body.restaurantData);
+        return res.json({ restaurants: newRetaurant });
     } catch (error) {
-      return res.status(500).json({ error: error.message });
+        return res.status(500).json({ error: error.message });
     }
-  });
+});
 
 
 /*
@@ -84,7 +84,7 @@ Router.get("/search", async (req, res) => {
         if (!restaurants) {
             return res.status(404).json({ error: `No Restaurant matched with ${searchString}` })
         }
-        return res.json({ restaurants })    
+        return res.json({ restaurants })
     } catch (error) {
         return res.status(500).json({ error: error.message })
     }
