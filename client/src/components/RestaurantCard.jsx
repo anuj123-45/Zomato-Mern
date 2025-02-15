@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { AiTwotoneStar } from 'react-icons/ai'
 import { useDispatch } from 'react-redux'
 import { getImage } from '../Redux/Reducer/image/image.action';
-
+import { Link } from 'react-router-dom';
 
 function RestaurantCard(props) {
   const dispatch = useDispatch();
@@ -16,6 +16,7 @@ function RestaurantCard(props) {
 
   return (
     <>
+      <Link to={`/restaurant/${props._id}`} className='w-full'>
       <div className='bg-white p-3 w-full rounded-lg md:w-1/2 lg:w-1/3 mb-4 hover:shadow-lg transition duration-700 ease-in-out'>
         <div className='w-full h-40 lg:h-48 relative'>
           <div className='absolute flex justify-between items-end w-full bottom-3'>
@@ -51,6 +52,7 @@ function RestaurantCard(props) {
         </div>
 
       </div>
+      </Link>
     </>
   )
 }

@@ -63,9 +63,9 @@ Method   Post
 
 Router.get("/:_id", async (req, res) => {
   try {
-    const image = await ImageModel.findById(req.params._id);
+    const imageno = await ImageModel.findById(req.params._id);
 
-    return res.json({ image });
+    return res.json({ imageno });
   } catch (error) {
     return res.status(500).json({ error: error.message });
   }
