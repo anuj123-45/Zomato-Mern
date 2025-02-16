@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useEffect ,useState} from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaCircleChevronRight } from "react-icons/fa6";
 import Slider from 'react-slick';
 import ReactStars from 'react-stars'
-
+import { useDispatch, useSelector } from 'react-redux';
 
 
 // Components
@@ -13,14 +13,34 @@ import { PrevArrow, NextArrow } from '../../components/CarousalArrow';
 import MapView from '../../components/Restaurant/MapView';
 import ReviewCard from '../../Components/Restaurant/Reviews/ReviewCard';
 
-
+//actions
+import { getImage } from '../../Redux/Reducer/image/image.action';
 
 
 const Overview = () => {
+  const [menuImage, setmenuImage] = useState({images:[]});
 
   const { id } = useParams();
 
+  const dispatch = useDispatch();
 
+  const reduxState = useSelector((globalStore) => globalStore.restaurantReducer.selectedRestaurant.restaurant);
+  console.log({ reduxState });
+  
+  useEffect(() => {
+    if (reduxState?.menuImages) {
+      dispatch(getImage(reduxState.menuImages))
+        .then((data) => {
+          const images=[];
+          data.payload.image.images.map(({location})=>images.push(location))
+          setmenuImage(images)
+        }
+        )
+        .catch((err) => console.error("Error fetching images:", err));
+    }
+  }, [reduxState]); // Depend on `reduxState`, not `reduxState.menuImages`
+  
+  
   const settings = {
     infinite: false,
     speed: 500,
@@ -66,7 +86,7 @@ const Overview = () => {
 
   return (
     <>
- 
+
       <div className="flex flex-col md:flex-row relative gap-1">
         {/* Main Content */}
         <div className="md:w-4/6 shadow-sm">
@@ -81,7 +101,7 @@ const Overview = () => {
           </div>
 
           <div className="flex flex-wrap gap-3 my-4">
-            <MenuCollection menuTitle="Menu" pages="2" image={["https://b.zmtcdn.com/data/menus/201/50201/449179bcd4cb8dc146dfdff28219576b.jpg","https://img.freepik.com/premium-photo/restaurant-menu-card_1148655-2674.jpg?semt=ais_hybrid"]}/>
+            <MenuCollection menuTitle="Menu" pages="2" image={menuImage} />
           </div>
 
           <h4 className="text-lg font-bold my-4 text-zomato-1000">Cuisines</h4>

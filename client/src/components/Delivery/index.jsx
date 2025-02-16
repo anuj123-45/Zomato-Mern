@@ -22,11 +22,14 @@ function Delivery() {
     <>
       <DeliveryCarousel />
       <Brand />
-      <div className="flex justify-between flex-wrap">
-        {restaurantList.map((list) => (
-         <RestaurantCard {...list} key={list._id} />
-        ))}
-      </div>
+      <div className="flex flex-wrap -mx-2">
+  {restaurantList?.map((list) => (
+  
+      <RestaurantCard {...list} />
+  ))}
+</div>
+
+
     </>
   );
 }

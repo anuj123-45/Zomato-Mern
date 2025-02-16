@@ -4,6 +4,7 @@ import { FaLocationDot } from "react-icons/fa6";
 import { IoMdArrowDropdown ,IoMdArrowDropup} from "react-icons/io";
 import { RiSearch2Line } from "react-icons/ri";
 import { FaArrowLeft } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 
 
 
@@ -52,8 +53,12 @@ const LargeNav = () => {
 const RestaurantNavbar = () => {
     return <>
         <nav className='py-2 px-10 bg-white shadow-md lg:shadow-none'>
-            <MobileNav />
-            <LargeNav />
+          <Link to="/">
+          <MobileNav />
+          </Link>
+          <Link to="/">
+          <LargeNav />
+          </Link>
 
 
 
