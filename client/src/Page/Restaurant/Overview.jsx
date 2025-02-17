@@ -1,4 +1,4 @@
-import React, { useEffect ,useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { FaCircleChevronRight } from "react-icons/fa6";
 import Slider from 'react-slick';
@@ -18,7 +18,7 @@ import { getImage } from '../../Redux/Reducer/image/image.action';
 
 
 const Overview = () => {
-  const [menuImage, setmenuImage] = useState({images:[]});
+  const [menuImage, setmenuImage] = useState({ images: [] });
 
   const { id } = useParams();
 
@@ -26,21 +26,25 @@ const Overview = () => {
 
   const reduxState = useSelector((globalStore) => globalStore.restaurantReducer.selectedRestaurant.restaurant);
   console.log({ reduxState });
-  
+
   useEffect(() => {
     if (reduxState?.menuImages) {
       dispatch(getImage(reduxState.menuImages))
         .then((data) => {
-          const images=[];
-          data.payload.image.images.map(({location})=>images.push(location))
+          const images = [];
+          data.payload.image.images.map(({ location }) => images.push(location))
           setmenuImage(images)
         }
         )
         .catch((err) => console.error("Error fetching images:", err));
     }
-  }, [reduxState]); // Depend on `reduxState`, not `reduxState.menuImages`
-  
-  
+  }, []); // Depend on `reduxState`, not `reduxState.menuImages`
+
+
+  const getLatLong = (mapAddress) => {
+    if (!mapAddress || typeof mapAddress !== "string") return [0, 0]; // Default fallback
+    return mapAddress.split(",").map((item) => parseFloat(item.trim()));
+  };
   const settings = {
     infinite: false,
     speed: 500,
@@ -105,20 +109,18 @@ const Overview = () => {
           </div>
 
           <h4 className="text-lg font-bold my-4 text-zomato-1000">Cuisines</h4>
-          <div className="flex flex-wrap gap-2 my-2">
-            <span className="border border-gray-600 text-zomato-1000 px-2 py-1 rounded-full">
-              Biryani
-            </span>
-            <span className="border border-gray-600 text-zomato-1000 px-2 py-1 rounded-full">
-              South Indian
-            </span>
-            <span className="border border-gray-600 text-zomato-1000 px-2 py-1 rounded-full">
-              Shake
-            </span>
+          <div className="flex flex-wrap gap-2">
+            {reduxState?.cuisine.map((data) => (
+              <span className="border border-gray-600 text-blue-600 px-2 py-1 rounded-full">
+                {data}
+              </span>
+            ))}
           </div>
 
+
+
           <h4 className="text-lg font-semibold text-black">Average Cost</h4>
-          <h6>₹1,000 for two people (approx.)</h6>
+          <h6>₹{reduxState?.averageCost} for two people (approx.)</h6>
           <small className="text-gray-500">Exclusive of applicable taxes and charges, if any</small>
 
           <div className="my-4">
@@ -146,7 +148,12 @@ const Overview = () => {
           </div>
 
           <div className='my-4 md:hidden'>
-            < MapView title='Mumbai Express' phno='7876578377' mapLocation={[13.926689626126564, 77.60037198127637]} address="57/1, 1st Floor, Jayalaxmi Chambers, Near Old Galaxy Theatre, Residency Road, Bangalore" />
+          <MapView
+            title={reduxState?.name}
+            phno={`+91${reduxState?.contactNumber}`}
+            mapLocation={getLatLong(reduxState?.mapLocation)} // Ensure it's not an array inside an array
+            address={reduxState?.address}
+          />
           </div>
 
           <div className='my-6'>
@@ -161,9 +168,12 @@ const Overview = () => {
 
         {/* Sidebar */}
         <aside className=" hidden  md:flex  flex-col gap-2  md:w-2/6  top-2  sticky h-fit bg-white p-3 rounded-md shadow-md">
-          < MapView title='Mumbai Express' phno='7876578377' mapLocation={[13.926689626126564, 77.60037198127637]} address="57/1, 1st Floor, Jayalaxmi Chambers, Near Old Galaxy Theatre, Residency Road, Bangalore
-
-"/>
+          <MapView
+            title={reduxState?.name}
+            phno={`+91${reduxState?.contactNumber}`}
+            mapLocation={getLatLong(reduxState?.mapLocation)} // Ensure it's not an array inside an array
+            address={reduxState?.address}
+          />
         </aside>
       </div>
     </>
